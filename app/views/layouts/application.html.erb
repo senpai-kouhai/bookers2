@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,28 +11,51 @@
   </head>
 
   <body>
-    <header>
-    <a href="<%= root_path %>">Bookers</a>
-    <% if user_signed_in? %>
-      <li><i class="fas fa-home"></i>Home</li>
-      <li><i class="fas fa-users"></i>Users</li>
-      <li><i class="fas fa-book-open"></i>Books</li>
-      <li>
-        <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt"></i>Log out
-        <% end %>
-      </li>
-    <% else %>
-      <li>Home</li>
-      <li>About</li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
-    <%= yield %>
+      <header>
+        <nav class="navbar navbar-dark bg-dark">
+          <div class="container text-white">
+            <a href="<%= root_path %>" class="text-white text-decoration-none h5">Bookers</a>
+            <% if user_signed_in? %>
+              <ul class="d-flex list-unstyled">
+                <li class="px-2"><i class="fas fa-home"></i>Home</li>
+                <li class="px-2"><i class="fas fa-users"></i>Users</li>
+                <li class="px-2"><i class="fas fa-book-open"></i>Books</li>
+                <li class="px-2">
+                  <%= link_to destroy_user_session_path, method: :delete, style: "text-decoration:none; color:inherit;" do %>
+                    <i class="fas fa-sign-out-alt"></i>Log out
+                  <% end %>
+                </li>
+              </ul>
+            <% else %>
+              <ul class="d-flex list-unstyled">
+                <li class="px-2">
+                  <%= link_to root_path, style: "text-decoration:none; color:inherit;" do %>
+                  <i class="fas fa-home text-decoration-none"></i>Home
+                  <% end %>
+                </li>
+                <li class="px-2"><i class="fas fa-link"></i>About</li>
+                <li class="px-2">
+                  <%= link_to new_user_registration_path, style: "text-decoration:none; color:inherit;" do %>
+                    <i class="fas fa-user-plus"></i>Sign up
+                  <% end %>
+                </li>
+                <li class="px-2">
+                  <%= link_to new_user_session_path, style: "text-decoration:none; color:inherit;" do %>
+                  <i class="fas fa-sign-in-alt"></i>Log in
+                  <% end %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+        </nav>
+      </header>
+
+      <%= yield %>
+
+      <footer>
+        <div class="d-flex align-items-center justify-content-center">
+          CopyRight Infratop.inc
+        </div>
+      </footer>
   </body>
 </html>
