@@ -13,38 +13,42 @@
   <body>
       <header>
         <nav class="navbar navbar-dark bg-dark">
-          <div class="container text-white">
-            <a href="<%= root_path %>" class="text-white text-decoration-none h5">Bookers</a>
+          <div class="container text-white mt-2 mb-2">
+            <a href="<%= root_path %>" class="text-white text-decoration-none h5 mb-0 mt-0">Bookers</a>
             <% if user_signed_in? %>
-              <ul class="d-flex list-unstyled">
-                <li class="px-2"><i class="fas fa-home"></i>Home</li>
-                <li class="px-2"><i class="fas fa-users"></i>Users</li>
-                <li class="px-2"><i class="fas fa-book-open"></i>Books</li>
-                <li class="px-2">
-                  <%= link_to destroy_user_session_path, method: :delete, style: "text-decoration:none; color:inherit;" do %>
-                    <i class="fas fa-sign-out-alt"></i>Log out
-                  <% end %>
+            <ul class="d-flex list-unstyled mb-0 mt-0">
+              <li class="px-2"><i class="fas fa-home"></i>Home</li>
+              <li class="px-2"><i class="fas fa-users"></i>Users</li>
+              <li class="px-2"><i class="fas fa-book-open"></i>Books</li>
+              <li class="px-2">
+                <%= link_to destroy_user_session_path, method: :delete, style: "text-decoration:none; color:inherit;" do %>
+                  <i class="fas fa-sign-out-alt"></i>Log out
+                <% end %>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="d-flex list-unstyled mb-0 mt-0">
+              <li class="px-2">
+                <%= link_to root_path, style: "text-decoration:none; color:inherit;" do %>
+                <i class="fas fa-home text-decoration-none"></i> Home
+                <% end %>
+              </li>
+              <li class="px-2">
+                <%= link_to home_about_path, style: "text-decoration:none; color:inherit;" do %>
+                <i class="fas fa-link"></i> About
+                <% end %>
                 </li>
-              </ul>
-            <% else %>
-              <ul class="d-flex list-unstyled">
-                <li class="px-2">
-                  <%= link_to root_path, style: "text-decoration:none; color:inherit;" do %>
-                  <i class="fas fa-home text-decoration-none"></i>Home
-                  <% end %>
-                </li>
-                <li class="px-2"><i class="fas fa-link"></i>About</li>
-                <li class="px-2">
-                  <%= link_to new_user_registration_path, style: "text-decoration:none; color:inherit;" do %>
-                    <i class="fas fa-user-plus"></i>Sign up
-                  <% end %>
-                </li>
-                <li class="px-2">
-                  <%= link_to new_user_session_path, style: "text-decoration:none; color:inherit;" do %>
-                  <i class="fas fa-sign-in-alt"></i>Log in
-                  <% end %>
-                </li>
-              </ul>
+              <li class="px-2">
+                <%= link_to new_user_registration_path, style: "text-decoration:none; color:inherit;" do %>
+                  <i class="fas fa-user-plus"></i> Sign up
+                <% end %>
+              </li>
+              <li class="px-2">
+                <%= link_to new_user_session_path, style: "text-decoration:none; color:inherit;" do %>
+                <i class="fas fa-sign-in-alt"></i> Log in
+                <% end %>
+              </li>
+            </ul>
             <% end %>
           </div>
         </nav>
