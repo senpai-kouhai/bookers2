@@ -2,6 +2,25 @@
   <div class="row">
     <div class="col-3">
       <h2>User info</h2>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag(@user.profile_image) %>
+        <% else %>
+          <%= image_tag 'default-image.jpg', size: "100x100" %>
+        <% end %>
+
+        <table class="table table-border-top-bottom mb-5">
+          <tr>
+            <th class="p-2">name</th>
+            <th class="p-2"><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th class="p-2">introduction</th>
+            <th class="p-2"><%= @user.introduction %></th>
+          </tr>
+        </table>
+
+        <a href="home_about_path" class="btn btn-outline-secondary btn-block mb-3"><i class="fas fa-user-cog"></i></a>
+
 
       <h2>New book</h2>
         <%= form_with model: @book do |f| %>
@@ -20,6 +39,17 @@
 
     <div class="col-8 offset-1">
       <h2>Books</h2>
+
+      <% if Book.exists? %>
+      <% else %>
+      <table class="table table-border-top-bottom mb-5">
+        <tr>
+          <th class="p-2 text-center">Title</th>
+          <th class="p-2 text-center">Opinion</th>
+        </tr>
+        <tr><th><td></td></th></tr>
+      </table>
+      <% end %>
     </div>
   </div>
 </div>
