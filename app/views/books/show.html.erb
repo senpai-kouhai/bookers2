@@ -46,7 +46,7 @@
             <td class="p-2 text-center"><%= @book_detail.title %></td>
             <td class="p-2 text-center"><%= @book_detail.body %></td>
             <td class="p-2 text-center"><a href="home_about_path" class="btn btn-success btn-sm">Edit</a></td>
-            <td class="p-2 text-center"><a href="home_about_path" class="btn btn-danger btn-sm">Destroy</a></td>
+            <td class="p-2 text-center"><%= link_to "Destroy", book_path, method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に消しますか？" %></td>
           </tr>
         </tbody>
       </table>
