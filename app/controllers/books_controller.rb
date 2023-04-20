@@ -29,6 +29,12 @@ class BooksController < ApplicationController
   def destroy
   end
 
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to home_about_path
+  end
+
 
   private
 
