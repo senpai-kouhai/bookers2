@@ -19,7 +19,9 @@
           </tr>
         </table>
 
-        <a href="home_about_path" class="btn btn-outline-secondary btn-block mb-3"><i class="fas fa-user-cog"></i></a>
+        <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block mb-3" do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
 
 
       <h2>New book</h2>
@@ -45,7 +47,7 @@
             <td class="p-2 text-center">画像<br><%= @book_detail.user.name %></td>
             <td class="p-2 text-center"><%= @book_detail.title %></td>
             <td class="p-2 text-center"><%= @book_detail.body %></td>
-            <td class="p-2 text-center"><a href="home_about_path" class="btn btn-success btn-sm">Edit</a></td>
+            <td class="p-2 text-center"><%= link_to "Edit", edit_book_path(@book_detail), class: "btn btn-success btn-sm" %></td>
             <td class="p-2 text-center"><%= link_to "Destroy", book_path, method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に消しますか？" %></td>
           </tr>
         </tbody>
