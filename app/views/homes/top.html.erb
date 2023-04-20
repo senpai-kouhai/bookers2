@@ -7,8 +7,16 @@
         <p>you can share and exchange your opinions , inpressions , and emotions</p>
         <p>about various books!</p>
         <div class="buttons col-10 mx-auto">
-          <P><button class="btn btn-info btn-sm btn-block">Log in</button></P>
-          <P><button class="btn btn-success btn-sm btn-block">Sign up</button></P>
+          <P>
+          <%= link_to new_user_session_path, class: "btn btn-info btn-sm btn-block" do %>
+          Log in
+          <% end %>
+          </P>
+          <P>
+          <%= link_to new_user_registration_path, class: "btn btn-success btn-sm btn-block" do %>
+          Sign up
+          <% end %>
+          </P>
         </div>
       </div>
     </div>
