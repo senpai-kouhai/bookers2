@@ -3,7 +3,7 @@
     <div class="col-3">
       <h2>User info</h2>
         <% if @user.profile_image.attached? %>
-          <%= image_tag(@user.profile_image) %>
+          <%= image_tag @user.profile_image, size: "100x100" %>
         <% else %>
           <%= image_tag 'default-image.jpg', size: "100x100" %>
         <% end %>
@@ -44,7 +44,18 @@
       <table class="table table-border-top-bottom mb-5">
         <tbody>
           <tr>
-            <td class="p-2 text-center">画像<br><%= @book_detail.user.name %></td>
+            <td class="p-2 text-center">
+              <% if @user.profile_image.attached? %>
+                <%= link_to user_path(@user) do %>
+                  <%= image_tag @user.profile_image, size: "100x100" %>
+                <% end %>
+              <% else %>
+                <%= link_to user_path(@user) do %>
+                  <%= image_tag 'default-image.jpg', size: "100x100" %>
+                <% end %>
+              <% end %>
+              <br><%= link_to user_path(@user) do %><%= @book_detail.user.name %><% end %>
+            </td>
             <td class="p-2 text-center"><%= @book_detail.title %></td>
             <td class="p-2 text-center"><%= @book_detail.body %></td>
             <td class="p-2 text-center"><%= link_to "Edit", edit_book_path(@book_detail), class: "btn btn-success btn-sm" %></td>
