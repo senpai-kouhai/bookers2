@@ -1,3 +1,9 @@
+<% flash.each do |name, msg| %>
+  <% if name == :notice %>
+    <div class="alert alert-success"><%= msg %></div>
+  <% end %>
+<% end %>
+
 <%= render 'userinfo', user: @user, book: @book %>
 
     <div class="col-8 offset-1">

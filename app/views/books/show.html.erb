@@ -1,3 +1,9 @@
+<% flash.each do |name, msg| %>
+  <% if name == :notice %>
+    <div class="alert alert-success"><%= msg %></div>
+  <% end %>
+<% end %>
+
 <%= render 'users/userinfo', user: @user, book: @book %>
 
     <div class="col-8 offset-1">
@@ -19,8 +25,14 @@
             </td>
             <td class="p-2 text-center"><%= @book_detail.title %></td>
             <td class="p-2 text-center"><%= @book_detail.body %></td>
-            <td class="p-2 text-center"><%= link_to "Edit", edit_book_path(@book_detail), class: "btn btn-success btn-sm" %></td>
-            <td class="p-2 text-center"><%= link_to "Destroy", book_path, method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に消しますか？" %></td>
+            <% if @book_detail.user == current_user %>
+              <td class="p-2 text-center">
+                <%= link_to "Edit", edit_book_path(@book_detail), class: "btn btn-success btn-sm" %>
+              </td>
+              <td class="p-2 text-center">
+                <%= link_to "Destroy", book_path, method: :delete, class: "btn btn-danger btn-sm", "data-confirm" => "本当に消しますか？" %>
+              </td>
+            <% end %>
           </tr>
         </tbody>
       </table>

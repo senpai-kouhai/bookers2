@@ -1,3 +1,13 @@
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
 <%= render 'users/userinfo', user: @user, book: @book %>
 
     <div class="col-8 offset-1">
